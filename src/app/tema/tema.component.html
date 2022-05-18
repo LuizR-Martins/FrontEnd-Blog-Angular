@@ -1,0 +1,56 @@
+<div class="container-fluid py-5 bg-fundo bg-text">
+  <a class="text-light" routerLink='/inicio'>Voltar ao inicio</a>
+  <div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-md-6">
+        <h2 class="text-center">Cadastre um novo tema</h2>
+
+        <form>
+          <div class="form-group">
+            <label for="">Descrição do tema</label>
+            <input type="text" id="tema" name="tema" class="form-control" [(ngModel)]="tema.descricao">
+          </div>
+
+          <div>
+            <button class="btn btn-outline-light d-block mx-auto w-50" (click)="cadastrarTema()"
+            [disabled]="tema.descricao == null">Cadastrar tema</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-3">
+        <img src="assets/astrocat.png" alt="" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <h2 class="text-center mb-3">Temas cadastrados:</h2>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Descrição</th>
+            <th scope="col" class="text-center">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tema of listaTemas; index as id">
+            <th scope="row">{{tema.id}}</th>
+            <td>{{tema.descricao}}</td>
+            <td>
+              <div class="d-flex justify-content-around">
+                <button class="btn btn-outline-info" [routerLink]="['/temaEdit', tema.id]">Editar</button>
+                <button class="btn btn-outline-danger" [routerLink]="['/temaDelete', tema.id]">Apagar</button>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
